@@ -3,7 +3,7 @@ const player = document.querySelector('.video-player');
 const video = player.querySelector('.viewer');
 const progress = player.querySelector('.video-player__progress');
 const progressBar = player.querySelector('.video-player__progress--filled');
-const toggle = player.querySelector('.toggle');
+const toggles = player.querySelectorAll('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.video-player__slider');
 
@@ -53,7 +53,7 @@ function scrub(e) {
 // video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
 
-toggle.addEventListener('click', togglePlay);
+toggles.forEach(toggle => toggle.addEventListener('click', togglePlay));
 
 skipButtons.forEach(skipButton => skipButton.addEventListener('click', skip));
 
