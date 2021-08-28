@@ -93,7 +93,7 @@ body {
 
 .video-player__progress--filled {
   position: relative;
-  width: 50%;
+  width: 0%;
   background-color: #710707;
 }
 
