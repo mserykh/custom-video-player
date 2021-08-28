@@ -26,7 +26,16 @@ function skip() {
 }
 
 function handleRangeUpdate() {
-  video[this.name] = this.value;
+  const value = this.value;
+  video[this.name] = value;
+}
+
+function handleRangeProgress() {
+  const value = this.value;
+  const max = this.max;
+  const min = this.min;
+  const percent = Math.floor(((value - min) / (max - min)) * 100);
+  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${percent}%, #C4C4C4 ${percent}%)`;
 }
 
 function handleProgress() {
@@ -48,10 +57,12 @@ toggle.addEventListener('click', togglePlay);
 
 skipButtons.forEach(skipButton => skipButton.addEventListener('click', skip));
 
-ranges.forEach(range => range.addEventListener('change', handleRangeUpdate))
-ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate))
-
 let isMousedown = false;
+ranges.forEach(range => range.addEventListener('input', handleRangeProgress));
+ranges.forEach(range => range.addEventListener('change', handleRangeUpdate))
+ranges.forEach(range => range.addEventListener('click', handleRangeUpdate))
+ranges.forEach(range => range.addEventListener('mousemove', () => isMousedown && handleRangeUpdate));
+
 progress.addEventListener('click', scrub);
 progress.addEventListener('mousemove', (e) => isMousedown && scrub(e));
 progress.addEventListener('mousedown', () => isMousedown = true);
