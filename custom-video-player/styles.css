@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, ::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-player {
+  max-width: 750px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.video-player__video {
+  width: 100%;
+}
+
