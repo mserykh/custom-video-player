@@ -10,6 +10,9 @@
   <div class="video-player">
     <video class="video-player__video viewer" src="#"></video>
     <div class="video-player__controls">
+      <div class="video-player__progress">
+        <div class="video-player__progress--filled"></div>
+      </div>
       <button class="video-player__btn video-player__btn--preview toggle" type="button" title="Play">
         <span class="visually-hidden">Play video</span>
       </button>
@@ -18,13 +21,12 @@
           <span class="visually-hidden video-playing">pause</span>
           <span class="visually-hidden video-onpause">play</span>
       </button>
-      <input class="video-player__progress" type="range" value="47" min="0" max="100" step="1">
       <div class="controls__speed">
         <button class="video-player__btn--speed normal video-player__btn" type="button">
-          <span class="visually-hidden normal">mute</span>
-          <span class="visually-hidden speeded">unmute</span>
+          <span class="visually-hidden normal">normal</span>
+          <span class="visually-hidden speeded">speeded</span>
         </button>
-        <input class="video-player__slider video-player__slider--speed" type="range" name="speedRate" min="-0.5" max="2.5" step="0.25" value="1">
+        <input class="video-player__slider video-player__slider--speed" type="range" name="speedRate" min="-0.5" max="2.5" step="0.5" value="1">
       </div>
       <button class="video-player__btn--skip-back video-player__btn" data-skip="-10">10s</button>
       <button class="video-player__btn--skip-forward video-player__btn" data-skip="25">25s</button>
@@ -36,7 +38,7 @@
         <input class="video-player__slider video-player__slider--volume" type="range" name="volume" min="0" max="1" step="0.05" value="0.5">
       </div>
       <button class="video-player__btn--fullscreen player__btn">
-        <span class="visually-hidden">open the video in fullscreen</span>
+        <span class="visually-hidden">open video in fullscreen</span>
       </button>
     </div>
   </div>
