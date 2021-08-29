@@ -13,6 +13,7 @@ const volumeButton = player.querySelector('.video-player__btn--volume');
 const volumePercentage = player.querySelector('.video-player__volume-percentage');
 const ranges = player.querySelectorAll('.video-player__slider');
 const speedRate = player.querySelector('.video-player__speed-rate');
+const speedRateButton = player.querySelector('.video-player__btn--speed');
 const fullscreenButton = player.querySelector('.video-player__btn--fullscreen');
 
 /* Flags and variables*/
@@ -115,6 +116,13 @@ function toggleVolumeIcon(percent) {
   }
 }
 
+function backToNormalSpeedRate() {
+  video.playbackRate = 1;
+  ranges[1].value = +video.playbackRate;
+  showSpeedRate(+video.playbackRate);
+  ranges[1].style.background = `linear-gradient(to right, #710707 0%, #710707 ${(video.playbackRate - 0.5) / 1.5 * 100}%, #C4C4C4 ${(video.playbackRate - 0.5) / 1.5 * 100}%)`;
+}
+
 function handleProgress() {
   const duration = video.duration;
   const currentTime = video.currentTime;
@@ -202,10 +210,7 @@ function onKeyElementClick(e) {
   }
 
   if (e.code === 'KeyN') {
-    video.playbackRate = 1;
-    ranges[1].value = +video.playbackRate;
-    showSpeedRate(+video.playbackRate);
-    ranges[1].style.background = `linear-gradient(to right, #710707 0%, #710707 ${(video.playbackRate - 0.5) / 1.5 * 100}%, #C4C4C4 ${(video.playbackRate - 0.5) / 1.5 * 100}%)`;
+    backToNormalSpeedRate();
   }
 
   if (e.code === 'KeyF') {
@@ -266,6 +271,8 @@ toggle.addEventListener('click', togglePlay);
 volumeButton.addEventListener('click', toggleVolume)
 
 skipButtons.forEach(skipButton => skipButton.addEventListener('click', skip));
+
+speedRateButton.addEventListener('click', backToNormalSpeedRate);
 
 ranges.forEach(range => range.addEventListener('input', handleRangeProgress));
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
