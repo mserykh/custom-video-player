@@ -208,6 +208,47 @@ function onKeyElementClick(e) {
   if (e.code === 'KeyF') {
     toggleFullscreen();
   }
+
+  if (e.code === 'Digit0' || e.code === 'Numpad0') {
+    video.currentTime = 0;
+  }
+
+  if (e.code === 'Digit1' || e.code === 'Numpad1') {
+    video.currentTime = video.duration * 0.1;
+  }
+
+  if (e.code === 'Digit2' || e.code === 'Numpad2') {
+    video.currentTime = video.duration * 0.2;
+  }
+
+  if (e.code === 'Digit3' || e.code === 'Numpad3') {
+    video.currentTime = video.duration * 0.3;
+  }
+
+  if (e.code === 'Digit4' || e.code === 'Numpad4') {
+    video.currentTime = video.duration * 04;
+  }
+
+  if (e.code === 'Digit5' || e.code === 'Numpad5') {
+    video.currentTime = video.duration * 0.5;
+  }
+
+  if (e.code === 'Digit6' || e.code === 'Numpad6') {
+    video.currentTime = video.duration * 0.6;
+  }
+
+  if (e.code === 'Digit7' || e.code === 'Numpad7') {
+    video.currentTime = video.duration * 0.7;
+  }
+
+  if (e.code === 'Digit8' || e.code === 'Numpad8') {
+    video.currentTime = video.duration * 0.8;
+  }
+
+  if (e.code === 'Digit9' || e.code === 'Numpad9') {
+    video.currentTime = video.duration * 0.9;
+  }
+
 }
 
 /* Event listeners */
