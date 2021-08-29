@@ -138,6 +138,11 @@ body {
 
 .video-player__time-codes {
   font-size: 22px;
+}
+
+.video-player__time-codes, 
+.video-player__volume-percentage,
+.video-player__speed-rate {
   font-feature-settings: "tnum";
   font-variant-numeric: tabular-nums;
 }
@@ -200,7 +205,18 @@ body {
 .video-player__btn--volume {
   height: 31px;
   width: 38px;
+}
+
+.volume-high {
   background-image: url('assets/svg/volume.svg');
+}
+
+.volume-low {
+  background-image: url('assets/svg/volume-half.svg');
+}
+
+.muted {
+  background-image: url('assets/svg/muted.svg');
 }
 
 .video-player__btn--fullscreen {

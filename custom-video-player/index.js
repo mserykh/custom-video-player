@@ -8,14 +8,19 @@ const toggle = player.querySelector('.toggle');
 const timeCodeCurrent = player.querySelector('.video-player__time-code--current');
 const timeCodeDuration = player.querySelector('.video-player__time-code--duration');
 const skipButtons = player.querySelectorAll('[data-skip]');
+const volumeRange = player.querySelector('.video-player__slider--volume');
+const volumeButton = player.querySelector('.video-player__btn--volume');
+const volumePercentage = player.querySelector('.video-player__volume-percentage');
 const ranges = player.querySelectorAll('.video-player__slider');
+const speedRate = player.querySelector('.video-player__speed-rate');
 const fullscreenButton = player.querySelector('.video-player__btn--fullscreen');
 
-
-/* Flags */
+/* Flags and variables*/
 let mouseTimer = null;
 let isHidden = false;
 let isMousedown = false;
+let isVolumeOn = true;
+let lastVolumeValue = ranges[0].value;
 
 /* Functions */
 function togglePlay() {
@@ -38,6 +43,7 @@ function skip() {
 function handleRangeUpdate() {
   const value = this.value;
   video[this.name] = value;
+  if (this.name === 'volume') lastVolumeValue = value;
 }
 
 function handleRangeProgress() {
@@ -46,6 +52,53 @@ function handleRangeProgress() {
   const min = this.min;
   const percent = Math.floor(((value - min) / (max - min)) * 100);
   this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${percent}%, #C4C4C4 ${percent}%)`;
+
+  if (this.name === 'volume') showVolumePercentage(percent);
+}
+
+function showVolumePercentage(percent) {
+  volumePercentage.innerText = `${percent}%`;
+  toggleVolumeIcon(percent);
+}
+
+function toggleVolume() {
+  if (isVolumeOn) {
+    volumeButton.classList.add('muted');
+    video.muted = isVolumeOn;
+    ranges[0].value = 0;
+    ranges[0].style.background = `linear-gradient(to right, #710707 0%, #710707 ${ranges[0].value}%, #C4C4C4 ${ranges[0].value}%)`;
+    showVolumePercentage(ranges[0].value * 100);
+    isVolumeOn = false;
+  }
+  else if (!isVolumeOn) {
+    volumeButton.classList.remove('muted');
+    video.muted = isVolumeOn;
+    video.volume = lastVolumeValue;
+    ranges[0].value = lastVolumeValue;
+    ranges[0].style.background = `linear-gradient(to right, #710707 0%, #710707 ${ranges[0].value * 100}%, #C4C4C4 ${ranges[0].value * 100}%)`;
+    showVolumePercentage(ranges[0].value * 100);
+    isVolumeOn = true;
+  }
+}
+
+function toggleVolumeIcon(percent) {
+  if (percent < 51 & percent !== 0) {
+    volumeButton.classList.remove('muted');
+    volumeButton.classList.remove('volume-high');
+    volumeButton.classList.add('volume-low');
+    isVolumeOn = true;
+    video.muted = !isVolumeOn;
+  } else if (percent >= 51) {
+    volumeButton.classList.remove('muted');
+    volumeButton.classList.remove('volume-low');
+    volumeButton.classList.add('volume-high');
+    isVolumeOn = true;
+    video.muted = !isVolumeOn;
+  } else if (percent === 0) {
+    volumeButton.classList.add('muted');
+    isVolumeOn = false;
+    video.muted = !isVolumeOn;
+  }
 }
 
 function handleProgress() {
@@ -117,10 +170,15 @@ function onKeyElementClick(e) {
   if (e.code === 'KeyL') {
     video.currentTime += 25;
   }
+
+  if (e.code === 'KeyM') {
+    toggleVolume();
+  }
 }
 
 /* Event listeners */
 document.addEventListener('keydown', onKeyElementClick);
+
 // video.addEventListener('play', updateButton);
 // video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
@@ -129,8 +187,9 @@ video.addEventListener('loadeddata', getDuration)
 
 toggle.addEventListener('click', togglePlay);
 
-skipButtons.forEach(skipButton => skipButton.addEventListener('click', skip));
+volumeButton.addEventListener('click', toggleVolume)
 
+skipButtons.forEach(skipButton => skipButton.addEventListener('click', skip));
 
 ranges.forEach(range => range.addEventListener('input', handleRangeProgress));
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
