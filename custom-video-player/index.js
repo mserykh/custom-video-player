@@ -112,11 +112,11 @@ function onKeyElementClick(e) {
   }
   if (e.code === 'KeyJ') {
     video.currentTime -= 10;
-  };
+  }
 
   if (e.code === 'KeyL') {
     video.currentTime += 25;
-  };
+  }
 }
 
 /* Event listeners */
