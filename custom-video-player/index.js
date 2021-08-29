@@ -13,7 +13,7 @@ const fullscreenButton = player.querySelector('.video-player__btn--fullscreen');
 
 
 /* Flags */
-let mousTimer = null;
+let mouseTimer = null;
 let isHidden = false;
 let isMousedown = false;
 
