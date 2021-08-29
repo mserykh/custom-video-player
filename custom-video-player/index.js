@@ -16,6 +16,7 @@ const speedRate = player.querySelector('.video-player__speed-rate');
 const fullscreenButton = player.querySelector('.video-player__btn--fullscreen');
 
 /* Flags and variables*/
+let isPlaying = false;
 let isMousedown = false;
 let isVolumeOn = true;
 let lastVolumeValue = ranges[0].value;
@@ -24,14 +25,24 @@ let lastVolumeValue = ranges[0].value;
 function togglePlay() {
   if (video.paused || video.ended) {
     video.play();
+    updateButton();
+    isPlaying = true;
   }
   else {
     video.pause();
+    updateButton();
+    isPlaying = false;
   }
 }
 
 function updateButton() {
-  toggle.style.setProperty('');
+  if (!isPlaying) {
+    toggle.style.background = `url('assets/svg/play-small.svg')`;
+  }
+  else if (isPlaying) {
+    toggle.style.background = `url('assets/svg/paused-small.svg')`;
+  }
+  
 }
 
 function skip() {
@@ -246,8 +257,6 @@ function onKeyElementClick(e) {
 /* Event listeners */
 document.addEventListener('keydown', onKeyElementClick);
 
-// video.addEventListener('play', updateButton);
-// video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
 video.addEventListener('click', togglePlay);
 video.addEventListener('loadeddata', getDuration)
