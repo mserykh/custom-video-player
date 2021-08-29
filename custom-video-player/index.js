@@ -165,7 +165,7 @@ function hide() {
 
 function onKeyElementClick(e) {
   e.preventDefault();
-  
+
   if (e.code === 'Space' || e.code === 'KeyK') {
     togglePlay();
   }
@@ -205,6 +205,9 @@ function onKeyElementClick(e) {
     ranges[1].style.background = `linear-gradient(to right, #710707 0%, #710707 ${(video.playbackRate - 0.5) / 1.5 * 100}%, #C4C4C4 ${(video.playbackRate - 0.5) / 1.5 * 100}%)`;
   }
 
+  if (e.code === 'KeyF') {
+    toggleFullscreen();
+  }
 }
 
 /* Event listeners */
