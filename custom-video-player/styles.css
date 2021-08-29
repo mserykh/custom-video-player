@@ -36,6 +36,7 @@ body {
 .video-player {
   position: relative;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .video-player:fullscreen {
@@ -77,8 +78,15 @@ body {
   bottom: 0;
   width: 100%;
   background-color: #000000;
-  transform: translateY(0);
+  transform: translateY(100%);
+  transition: transform ease-in-out 0.5s;
 }
+
+.video-player:hover .video-player__controls {
+  transform: translateY(0);
+  transition: transform ease-in-out 0.5s;
+}
+
 
 .buttons-container {
   display: flex;
