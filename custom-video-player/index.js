@@ -54,11 +54,16 @@ function handleRangeProgress() {
   this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${percent}%, #C4C4C4 ${percent}%)`;
 
   if (this.name === 'volume') showVolumePercentage(percent);
+  if (this.name === 'playbackRate') showSpeedRate(value);
 }
 
 function showVolumePercentage(percent) {
   volumePercentage.innerText = `${percent}%`;
   toggleVolumeIcon(percent);
+}
+
+function showSpeedRate(value) {
+  speedRate.innerText = `x${value}`;
 }
 
 function toggleVolume() {
@@ -174,6 +179,30 @@ function onKeyElementClick(e) {
   if (e.code === 'KeyM') {
     toggleVolume();
   }
+
+  if (e.key === '>') {
+    if (video.playbackRate >= 2) return;
+    video.playbackRate += parseFloat(ranges[1].step);
+    ranges[1].value = +video.playbackRate;
+    showSpeedRate(+video.playbackRate);
+    ranges[1].style.background = `linear-gradient(to right, #710707 0%, #710707 ${(video.playbackRate - 0.5) / 1.5 * 100}%, #C4C4C4 ${(video.playbackRate - 0.5) / 1.5 * 100}%)`;
+  }
+
+  if (e.key === '<') {
+    if (video.playbackRate <= 0.5) return;
+    video.playbackRate -= parseFloat(ranges[1].step);
+    ranges[1].value = +video.playbackRate;
+    showSpeedRate(+video.playbackRate);
+    ranges[1].style.background = `linear-gradient(to right, #710707 0%, #710707 ${(video.playbackRate - 0.5) / 1.5 * 100}%, #C4C4C4 ${(video.playbackRate - 0.5) / 1.5 * 100}%)`;
+  }
+
+  if (e.code === 'KeyN') {
+    video.playbackRate = 1;
+    ranges[1].value = +video.playbackRate;
+    showSpeedRate(+video.playbackRate);
+    ranges[1].style.background = `linear-gradient(to right, #710707 0%, #710707 ${(video.playbackRate - 0.5) / 1.5 * 100}%, #C4C4C4 ${(video.playbackRate - 0.5) / 1.5 * 100}%)`;
+  }
+
 }
 
 /* Event listeners */

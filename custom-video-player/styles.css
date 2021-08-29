@@ -233,7 +233,7 @@ input[type=range] {
 }
 
 .video-player__slider--speed[type=range] {
-  background: linear-gradient(to right, #710707 0%, #710707 50%, #C4C4C4 50%, #C4C4C4 100%);;
+  background: linear-gradient(to right, #710707 0%, #710707 33%, #C4C4C4 33%, #C4C4C4 100%);;
 }
 
 .video-player__slider--volume[type=range] {
