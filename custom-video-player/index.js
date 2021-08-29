@@ -4,7 +4,7 @@ const video = player.querySelector('.viewer');
 const controls = player.querySelector('.video-player__controls');
 const progress = player.querySelector('.video-player__progress');
 const progressBar = player.querySelector('.video-player__progress--filled');
-const toggles = player.querySelectorAll('.toggle');
+const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.video-player__slider');
 const fullscreenButton = player.querySelector('.video-player__btn--fullscreen');
@@ -85,8 +85,9 @@ function hide() {
 // video.addEventListener('play', updateButton);
 // video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
+video.addEventListener('click', togglePlay);
 
-toggles.forEach(toggle => toggle.addEventListener('click', togglePlay));
+toggle.addEventListener('click', togglePlay);
 
 skipButtons.forEach(skipButton => skipButton.addEventListener('click', skip));
 
