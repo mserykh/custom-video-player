@@ -157,6 +157,7 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/*
 .video-player__btn--preview {
   position: absolute;
   top: 50%;
@@ -165,7 +166,16 @@ body {
   height: 220px;
   background-image: url('assets/svg/paused-big.svg');
   transform: translate(-50%, -50%);
+  transition: transform ease-in-out 0.5s;
+  opacity: 1;
+  transition: opacity ease-in-out 1s;
 }
+
+.video-player:hover .video-player__btn--preview {
+  transform: translate(-50%, calc(-50% - 75px / 2));
+  transition: transform ease-in-out 0.5s;
+}
+*/
 
 .video-player__btn--back,
 .video-player__btn--forward {
