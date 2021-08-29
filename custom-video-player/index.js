@@ -16,8 +16,6 @@ const speedRate = player.querySelector('.video-player__speed-rate');
 const fullscreenButton = player.querySelector('.video-player__btn--fullscreen');
 
 /* Flags and variables*/
-let mouseTimer = null;
-let isHidden = false;
 let isMousedown = false;
 let isVolumeOn = true;
 let lastVolumeValue = ranges[0].value;
@@ -141,30 +139,20 @@ function scrub(e) {
 function toggleFullscreen() {
   if (document.fullscreenElement) {
     document.exitFullscreen();
-    hide();
     fullscreenButton.style.background = `url('assets/svg/flscreen.svg')`;
   }
   else if (document.webkitFullscrrenElement) {
     document.webkitExitFullscreen();
-    hide();
     fullscreenButton.style.background = `url('assets/svg/flscreen.svg')`;
   }
   else if (player.fullscreenElement) {
     player.webkitExitFullscreen();
-    hide();
     fullscreenButton.style.background = `url('assets/svg/flscreen.svg')`;
   }
   else {
     player.requestFullscreen();
-    hide();
     fullscreenButton.style.background = `url('assets/svg/exit-flscreen.svg')`;
   }
-}
-
-function hide() {
-  mouseTimer = null;
-  player.style.cursor = 'none';
-  isHidden = true;
 }
 
 function onKeyElementClick(e) {
@@ -281,14 +269,3 @@ progress.addEventListener('mousedown', () => isMousedown = true);
 progress.addEventListener('mouseup', () => isMousedown = false);
 
 fullscreenButton.addEventListener('click', toggleFullscreen);
-
-player.addEventListener('mousemove', function() {
-  if (mouseTimer) {
-    window.clearTimeout('mouseTimer');
-  }
-  if (isHidden) {
-    player.style.cursor = 'default';
-    isHidden = false;
-  }
-  mouseTimer = window.setTimeout(hide, 3000);
-});
