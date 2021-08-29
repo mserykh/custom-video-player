@@ -211,7 +211,6 @@ input[type=range] {
   height: 8px;
   background: transparent;
   outline: none;
-  transition: background 450ms ease-in;
   -webkit-appearance: none;
 }
 
@@ -222,7 +221,6 @@ input[type=range] {
 .video-player__slider--volume[type=range] {
   background: linear-gradient(to right, #710707 0%, #710707 50%, #C4C4C4 50%, #C4C4C4 100%);;
 }
-
 
 input[type=range]:focus {
   outline: none;
