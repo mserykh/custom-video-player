@@ -142,18 +142,22 @@ function toggleFullscreen() {
   if (document.fullscreenElement) {
     document.exitFullscreen();
     hide();
+    fullscreenButton.style.background = `url('assets/svg/flscreen.svg')`;
   }
   else if (document.webkitFullscrrenElement) {
     document.webkitExitFullscreen();
     hide();
+    fullscreenButton.style.background = `url('assets/svg/flscreen.svg')`;
   }
   else if (player.fullscreenElement) {
     player.webkitExitFullscreen();
     hide();
+    fullscreenButton.style.background = `url('assets/svg/flscreen.svg')`;
   }
   else {
     player.requestFullscreen();
     hide();
+    fullscreenButton.style.background = `url('assets/svg/exit-flscreen.svg')`;
   }
 }
 
