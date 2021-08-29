@@ -268,7 +268,7 @@ video.addEventListener('loadeddata', getDuration)
 
 toggle.addEventListener('click', togglePlay);
 
-volumeButton.addEventListener('click', toggleVolume)
+volumeButton.addEventListener('click', toggleVolume);
 
 skipButtons.forEach(skipButton => skipButton.addEventListener('click', skip));
 
@@ -306,4 +306,4 @@ Self-evaluation
     [+] show time elapsed and video duration
 
     Total: 30 points
-    `);
+`);
