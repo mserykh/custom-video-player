@@ -278,3 +278,25 @@ progress.addEventListener('mousedown', () => isMousedown = true);
 progress.addEventListener('mouseup', () => isMousedown = false);
 
 fullscreenButton.addEventListener('click', toggleFullscreen);
+
+console.log(`
+Self-evaluation
+ 
+✅ reproduce functionality of the original application - 10 points 
+✅ add mandatory additional functionality - 10 points:
+    [+] key "Space" - toggle play/pause
+    [+] key "k" - toggle play/pause
+    [+] key "m" - toggle mute/unmute
+    [+] key ">" - increase playback rate
+    [+] key "<" - decrease playback rate
+    [+] key "f" - toggle full screen
+✅implement additional functionality - 10 points: 
+    [+] 0..9 - seek to specific point in the video 
+    [+] key "j" - rewind 10 seconds
+    [+] key "l" - fast forward 25 seconds
+    [+] key "n" - back to normal playback rate
+
+    [+] show time elapsed and video duration
+
+    Total: 30 points
+    `);
