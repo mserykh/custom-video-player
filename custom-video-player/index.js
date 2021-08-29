@@ -105,7 +105,15 @@ function hide() {
   isHidden = true;
 }
 
+function onKeyElementClick(e) {
+  e.preventDefault();
+  if (e.code === 'Space' || e.code === 'KeyK') {
+    togglePlay();
+  }
+}
+
 /* Event listeners */
+document.addEventListener('keydown', onKeyElementClick);
 // video.addEventListener('play', updateButton);
 // video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
