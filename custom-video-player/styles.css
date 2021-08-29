@@ -138,6 +138,8 @@ body {
 
 .video-player__time-codes {
   font-size: 22px;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
 }
 
 .video-player__btn--preview {

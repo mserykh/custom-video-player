@@ -5,6 +5,8 @@ const controls = player.querySelector('.video-player__controls');
 const progress = player.querySelector('.video-player__progress');
 const progressBar = player.querySelector('.video-player__progress--filled');
 const toggle = player.querySelector('.toggle');
+const timeCodeCurrent = player.querySelector('.video-player__time-code--current');
+const timeCodeEnd = player.querySelector('.video-player__time-code--end');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.video-player__slider');
 const fullscreenButton = player.querySelector('.video-player__btn--fullscreen');
@@ -47,8 +49,22 @@ function handleRangeProgress() {
 }
 
 function handleProgress() {
-  const percent = (video.currentTime / video.duration) * 100;
+  const duration = video.duration;
+  const currentTime = video.currentTime;
+  const percent = (currentTime / duration) * 100;
   progressBar.style.width = `${percent}%`;
+  displayReadableTime(currentTime);
+}
+
+function displayReadableTime(currentTime) {
+  const hours = Math.floor(currentTime / 3600);
+  const minutes = Math.floor(currentTime / 60);
+  const seconds = Math.floor(currentTime % 60);
+  timeCodeCurrent.innerHTML = `${formatNumber(hours)}:${formatNumber(minutes)}:${formatNumber(seconds)}`;
+}
+
+function formatNumber(number) {
+  return number < 10 ? `0${number}` : number;
 }
 
 function scrub(e) {
