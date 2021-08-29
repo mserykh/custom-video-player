@@ -165,9 +165,11 @@ function hide() {
 
 function onKeyElementClick(e) {
   e.preventDefault();
+  
   if (e.code === 'Space' || e.code === 'KeyK') {
     togglePlay();
   }
+
   if (e.code === 'KeyJ') {
     video.currentTime -= 10;
   }
