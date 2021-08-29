@@ -16,7 +16,6 @@
       <div class="video-player__viewer">
         <video class="video-player__video viewer" src="assets/video/test.mp4"></video>
         <button class="video-player__btn video-player__btn--preview" type="button">
-          <span class="visually-hidden">Play video</span>
         </button>
       </div>
       <div class="video-player__controls">
@@ -38,22 +37,17 @@
           </div>
           <div class="controls__volume">
             <button class="video-player__btn--volume loud video-player__btn" type="button" title="mute (m)">
-              <span class="visually-hidden loud">mute</span>
-              <span class="visually-hidden muted">unmute</span>
             </button>
             <span class="video-player__volume-percentage">50%</span>
             <input class="video-player__slider video-player__slider--volume" type="range" name="volume" min="0" max="1" step="0.05" value="0.5">
           </div>
           <div class="controls__speed">
             <button class="video-player__btn--speed normal video-player__btn" type="button">
-              <span class="visually-hidden normal">normal</span>
-              <span class="visually-hidden speeded">speeded</span>
             </button>
             <span class="video-player__speed-rate">x1</span>
             <input class="video-player__slider video-player__slider--speed" type="range" name="playbackRate" min="0.25" max="2.25" step="0.5" value="1">
           </div>
-          <button class="video-player__btn--fullscreen video-player__btn">
-            <span class="visually-hidden">open video in fullscreen</span>
+          <button class="video-player__btn--fullscreen video-player__btn" title="fulscreen (f)">
           </button>
         </div>
       </div>
