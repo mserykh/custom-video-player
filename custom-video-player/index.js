@@ -6,7 +6,7 @@ const progress = player.querySelector('.video-player__progress');
 const progressBar = player.querySelector('.video-player__progress--filled');
 const toggle = player.querySelector('.toggle');
 const timeCodeCurrent = player.querySelector('.video-player__time-code--current');
-const timeCodeEnd = player.querySelector('.video-player__time-code--end');
+const timeCodeDuration = player.querySelector('.video-player__time-code--duration');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.video-player__slider');
 const fullscreenButton = player.querySelector('.video-player__btn--fullscreen');
@@ -67,6 +67,14 @@ function formatNumber(number) {
   return number < 10 ? `0${number}` : number;
 }
 
+function getDuration() {
+  const duration = video.duration;
+  const hours = Math.floor(duration / 3600);
+  const minutes = Math.floor(duration / 60);
+  const seconds = Math.floor(duration % 60);
+  timeCodeDuration.innerHTML = `${formatNumber(hours)}:${formatNumber(minutes)}:${formatNumber(seconds)}`;
+}
+
 function scrub(e) {
   const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
   video.currentTime = scrubTime;
@@ -102,6 +110,7 @@ function hide() {
 // video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
 video.addEventListener('click', togglePlay);
+video.addEventListener('loadeddata', getDuration)
 
 toggle.addEventListener('click', togglePlay);
 
