@@ -218,7 +218,7 @@ function onKeyElementClick(e) {
   }
 
   if (e.code === 'Digit4' || e.code === 'Numpad4') {
-    video.currentTime = video.duration * 04;
+    video.currentTime = video.duration * 0.4;
   }
 
   if (e.code === 'Digit5' || e.code === 'Numpad5') {
