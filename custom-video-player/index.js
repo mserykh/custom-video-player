@@ -62,7 +62,7 @@ function handleProgress() {
 }
 
 function skip() {
-  if (video.currentTime >= (video.duration - 25)) {
+  if ((this.dataset.skip === '25') && video.currentTime >= (video.duration - 25)) {
     video.currentTime += (video.duration - video.currentTime - 0.02);
     handleProgress();
   } else {
@@ -201,8 +201,7 @@ function onKeyElementClick(e) {
   }
 
   if (e.code === 'KeyL') {
-    const onKeySkip = skip.call(skipButtons[1]);
-    onKeySkip();
+    skip.call(skipButtons[1]);
   }
 
   if (e.code === 'KeyM') {
