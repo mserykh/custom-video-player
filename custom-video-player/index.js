@@ -82,7 +82,7 @@ function toggleVolume() {
     video.muted = isVolumeOn;
     ranges[0].value = 0;
     ranges[0].style.background = `linear-gradient(to right, #710707 0%, #710707 ${ranges[0].value}%, #C4C4C4 ${ranges[0].value}%)`;
-    showVolumePercentage(ranges[0].value * 100);
+    showVolumePercentage(Math.floor(ranges[0].value * 100));
     isVolumeOn = false;
   }
   else if (!isVolumeOn) {
@@ -91,7 +91,7 @@ function toggleVolume() {
     video.volume = lastVolumeValue;
     ranges[0].value = lastVolumeValue;
     ranges[0].style.background = `linear-gradient(to right, #710707 0%, #710707 ${ranges[0].value * 100}%, #C4C4C4 ${ranges[0].value * 100}%)`;
-    showVolumePercentage(ranges[0].value * 100);
+    showVolumePercentage(Math.floor(ranges[0].value * 100));
     isVolumeOn = true;
   }
 }
