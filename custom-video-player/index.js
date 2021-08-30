@@ -324,7 +324,9 @@ Self-evaluation
 
 ****To do****
     [ ] implement slider
+    [ ] implement control sound volume with keyboard
     [ ] add transitions and hover effects
+    [ ] show time code while scrubbing
     [ ] show description of actions triggerd by the keyboard (mute / mute, playback rate, etc.)
     [ ] make the player adaptive
     [ ] refactor code
