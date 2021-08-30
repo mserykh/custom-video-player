@@ -302,7 +302,9 @@ progress.addEventListener('mouseup', () => isMousedown = false);
 fullscreenButton.addEventListener('click', toggleFullscreen);
 
 console.log(`
-Self-evaluation
+Rolling Scopes School - Stage 0 task
+
+Self-evaluation by Maria Serykh
 
 ✅ reproduce functionality of the original application - 10 points 
 ✅ add mandatory additional functionality - 10 points:
@@ -330,4 +332,6 @@ Self-evaluation
     [ ] show description of actions triggerd by the keyboard (mute / mute, playback rate, etc.)
     [ ] make the player adaptive
     [ ] refactor code
+    
+developed by mserykh - 2021
 `);
