@@ -24,7 +24,7 @@ let lastVolumeValue = ranges[0].value;
 
 /* Functions */
 function togglePlay() {
-  if (video.paused || video.ended) {
+  if (video.paused) {
     video.play();
     updateButton();
     isPlaying = true;
@@ -44,6 +44,21 @@ function updateButton() {
     toggle.style.background = `url('assets/svg/paused-small.svg')`;
   }
   
+}
+
+function handleProgress() {
+  const duration = video.duration;
+  const currentTime = video.currentTime;
+  const percent = (currentTime / duration) * 100;
+  progressBar.style.width = `${percent}%`;
+  displayReadableTime(currentTime);
+
+  if (currentTime === duration) {
+    video.pause();
+    updateButton();
+    isPlaying = false;
+  };
+
 }
 
 function skip() {
@@ -121,14 +136,6 @@ function backToNormalSpeedRate() {
   ranges[1].value = +video.playbackRate;
   showSpeedRate(+video.playbackRate);
   ranges[1].style.background = `linear-gradient(to right, #710707 0%, #710707 ${(video.playbackRate - 0.5) / 1.5 * 100}%, #C4C4C4 ${(video.playbackRate - 0.5) / 1.5 * 100}%)`;
-}
-
-function handleProgress() {
-  const duration = video.duration;
-  const currentTime = video.currentTime;
-  const percent = (currentTime / duration) * 100;
-  progressBar.style.width = `${percent}%`;
-  displayReadableTime(currentTime);
 }
 
 function displayReadableTime(currentTime) {
