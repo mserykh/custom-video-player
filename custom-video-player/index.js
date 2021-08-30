@@ -62,7 +62,12 @@ function handleProgress() {
 }
 
 function skip() {
-  video.currentTime += parseFloat(this.dataset.skip);
+  if (video.currentTime >= (video.duration - 25)) {
+    video.currentTime += (video.duration - video.currentTime - 1);
+    handleProgress();
+  } else {
+    video.currentTime += parseFloat(this.dataset.skip);
+  }
 }
 
 function handleRangeUpdate() {
@@ -193,7 +198,8 @@ function onKeyElementClick(e) {
   }
 
   if (e.code === 'KeyL') {
-    video.currentTime += 25;
+    const onKeySkip = skip.call(skipButtons[1]);
+    onKeySkip();
   }
 
   if (e.code === 'KeyM') {
