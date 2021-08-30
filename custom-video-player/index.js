@@ -303,7 +303,7 @@ fullscreenButton.addEventListener('click', toggleFullscreen);
 
 console.log(`
 Self-evaluation
- 
+
 ✅ reproduce functionality of the original application - 10 points 
 ✅ add mandatory additional functionality - 10 points:
     [+] key "Space" - toggle play/pause
@@ -313,12 +313,19 @@ Self-evaluation
     [+] key "<" - decrease playback rate
     [+] key "f" - toggle full screen
 ✅implement additional functionality - 10 points: 
-    [+] 0..9 - seek to specific point in the video 
-    [+] key "j" - rewind 10 seconds
-    [+] key "l" - fast forward 25 seconds
-    [+] key "n" - back to normal playback rate
+    [+] 0..9 - seek to specific point in the video - 2 points
+    [+] key "j" - rewind 10 seconds - 2 points
+    [+] key "l" - fast forward 25 seconds - 2 points
+    [+] key "r" - back to normal playback rate - 2 points
 
-    [+] show time elapsed and video duration
+    [+] show time elapsed and video duration - 2 points
 
     Total: 30 points
+
+****To do****
+    [ ] implement slider
+    [ ] add transitions and hover effects
+    [ ] show description of actions triggerd by the keyboard (mute / mute, playback rate, etc.)
+    [ ] make the player adaptive
+    [ ] refactor code
 `);
