@@ -224,7 +224,7 @@ function onKeyElementClick(e) {
     ranges[1].style.background = `linear-gradient(to right, #710707 0%, #710707 ${(video.playbackRate - 0.5) / 1.5 * 100}%, #C4C4C4 ${(video.playbackRate - 0.5) / 1.5 * 100}%)`;
   }
 
-  if (e.code === 'KeyN') {
+  if (e.code === 'KeyR') {
     backToNormalSpeedRate();
   }
 
