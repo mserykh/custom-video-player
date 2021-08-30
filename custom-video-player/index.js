@@ -63,7 +63,7 @@ function handleProgress() {
 
 function skip() {
   if (video.currentTime >= (video.duration - 25)) {
-    video.currentTime += (video.duration - video.currentTime - 1);
+    video.currentTime += (video.duration - video.currentTime - 0.02);
     handleProgress();
   } else {
     video.currentTime += parseFloat(this.dataset.skip);
@@ -195,6 +195,9 @@ function onKeyElementClick(e) {
 
   if (e.code === 'KeyJ') {
     video.currentTime -= 10;
+    if (video.paused) {
+      togglePlay();
+    }
   }
 
   if (e.code === 'KeyL') {
